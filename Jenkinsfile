@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        registryCredential = 'dockerhub'
+        registryCredential = 'dockerhub_id'
         imageName = 'beachcoder/external'
         dockerImage = ''
         }
