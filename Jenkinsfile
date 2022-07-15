@@ -41,7 +41,7 @@ pipeline {
             steps{
                 script {
                     echo 'pushing the image to docker hub' 
-                    docker.withRegistry('',registryCredential){
+                    docker.withRegistry('docker.io',registryCredential){
                         dockerImage.push("${env.BUILD_ID}")
                     }
                 }
