@@ -43,7 +43,7 @@ pipeline {
 				sh 'echo $dockerhub_id | docker login -u $dockerhub_id --password-stdin'
 			}
 		}           }
-            }
+            
         stage('push image') {
             steps{
                 script {
