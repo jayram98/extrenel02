@@ -42,7 +42,7 @@ pipeline {
 			steps {
 				script{
                     docker.withRegistry('',registryCredential){
-                    dockerImage.push(jay899/"${env.BUILD_ID}")}
+                    dockerImage.push(Ext_"${env.BUILD_ID}")}
 		    //docker push ("${env.BUILD_ID}")}		
                     
                     //docker login --username="${dockerHubUser}" --password="${dockerHubPassword}"
