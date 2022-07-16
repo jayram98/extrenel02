@@ -42,7 +42,7 @@ pipeline {
 			steps {
 				script{
                     docker.withRegistry('',registryCredential){
-		    sh "docker push jay899:${env.BUILD_ID}" 	    
+		    sh "docker push ${env.BUILD_ID}" 	    
                     //dockerImage.push(jay899/"${env.BUILD_ID}")
 		    }
 		    //docker push ("${env.BUILD_ID}")}		
