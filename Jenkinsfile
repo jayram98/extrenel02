@@ -35,12 +35,18 @@ pipeline {
                     dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
                     echo 'image built'
                 }
-            }
+ 		stage('Login') {
+
+			steps {
+				sh 'echo $dockerhub_id | docker login -u $dockerhub_id --password-stdin'
+			}
+		}           }
             }
         stage('push image') {
             steps{
                 script {
-                    echo 'image push' 
+                    echo 'image push'
+                    sh'echo ' 
                     
                 }
             }
