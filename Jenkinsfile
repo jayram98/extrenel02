@@ -46,7 +46,7 @@ pipeline {
 				script{
                docker.withRegistry('',registryCredential){
 	        //sh 'docker build -t  .
-		sh "docker login -u jay899 -p ilDvm@123"       
+		sh "docker login -u  -p "       
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
 		sh "docker images"
 	        sh "docker login docker.io"
