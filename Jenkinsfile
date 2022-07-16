@@ -49,6 +49,7 @@ pipeline {
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
 		sh "docker images"	
 	        sh "docker login docker.io"
+  		sh "docker push jay899/external:${env.BUILD_ID}"
 		    //sh 'docker push external:${env.BUILD_ID}' 
 	            //sh 'docker push external:${env.BUILD_ID}'
 	            
