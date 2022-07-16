@@ -44,7 +44,7 @@ pipeline {
                     /*docker.withRegistry('',registryCredential){
                     dockerImage.push("${env.BUILD_ID}")}
                     */
-                    docker login -u="${dockerHubUser}" -p="${dockerHubPassword}"
+                    docker login --username="${dockerHubUser}" --password="${dockerHubPassword}"
                     
                 }
 			}
