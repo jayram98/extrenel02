@@ -33,8 +33,8 @@ pipeline {
                 script {
 		    //sudo su	
                     echo 'building image' 
-                    //dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
-		    //docker image tag "${dockerImage}" "${env.BUILD_ID}"	
+                    //dockerImage = docker.build('${env.imageName}:${env.BUILD_ID}')
+		    //docker image tag '${dockerImage}' '${env.BUILD_ID}'	
 			
                     echo 'image built'
                 }
@@ -46,16 +46,16 @@ pipeline {
 				script{
                     docker.withRegistry('',registryCredential){
 	            sh 'docker build -t $'{env.imageName}' .		    
-		    sh "docker images"	
-	            sh "docker login docker.io"
-		    //sh "docker push external:${env.BUILD_ID}" 
-	            sh "docker push external:${env.BUILD_ID}"
+		    sh 'docker images'	
+	            sh 'docker login docker.io'
+		    //sh 'docker push external:${env.BUILD_ID}' 
+	            //sh 'docker push external:${env.BUILD_ID}'
 	            
-                    //dockerImage.push(jay899/"${env.BUILD_ID}")
+                    //dockerImage.push(jay899/'${env.BUILD_ID}')
 		    }
-		    //docker push ("${env.BUILD_ID}")}		
+		    //docker push ('${env.BUILD_ID}')}		
                     
-                    //docker login --username="${dockerHubUser}" --password="${dockerHubPassword}"
+                    //docker login --username='${dockerHubUser}' --password='${dockerHubPassword}'
                     
                 }
 			}
