@@ -40,7 +40,11 @@ pipeline {
  		stage('Login') {
 
 			steps {
-				sh 'echo $dockerhub_id | docker login -u $dockerhub_id --password-stdin'
+				script{
+                    docker.withRegistry('',registryCredential){
+                    dockerImage.push("${env.BUILD_ID}")
+                    }
+                }
 			}
 		}           
             
