@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        registryCredential = 'dockerhub_id'
+        registryCredential = 'jay899'
         imageName = 'external'
         dockerImage = ''
         }
@@ -41,10 +41,10 @@ pipeline {
 
 			steps {
 				script{
-                    /*docker.withRegistry('',registryCredential){
+                    docker.withRegistry('',registryCredential){
                     dockerImage.push("${env.BUILD_ID}")}
-                    */
-                    docker login --username="${dockerHubUser}" --password="${dockerHubPassword}"
+                    
+                    //docker login --username="${dockerHubUser}" --password="${dockerHubPassword}"
                     
                 }
 			}
