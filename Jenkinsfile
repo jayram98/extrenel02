@@ -37,12 +37,7 @@ pipeline {
                 }
             }
             }
-        stage('docker push') {
-            steps{
-                
-            }
-
-        }    
+  
      
    
 
