@@ -33,7 +33,7 @@ pipeline {
                 script {
                     echo 'building image' 
                     dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
-			docker image tag "${dockerImage}" "${env.BUILD_ID}"	
+		    //docker image tag "${dockerImage}" "${env.BUILD_ID}"	
 			
                     echo 'image built'
                 }
