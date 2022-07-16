@@ -33,7 +33,7 @@ pipeline {
                 script {
 		    //sudo su	
                     echo 'building image' 
-                    dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
+                    //dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
 		    //docker image tag '${dockerImage}' '${env.BUILD_ID}'	
 			
                     echo 'image built'
@@ -45,7 +45,7 @@ pipeline {
 			steps {
 				script{
                     docker.withRegistry('',registryCredential){
-	        //sh 'docker build -t $'{env.imageName}' .		    
+	        sh 'docker build -t $'{env.imageName}' .		    
 		    sh 'docker images'	
 	        sh 'docker login docker.io'
 		    //sh 'docker push external:${env.BUILD_ID}' 
