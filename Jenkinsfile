@@ -37,6 +37,14 @@ pipeline {
                 }
             }
             }
+        stage('push image') {
+            steps{
+                script {
+                    echo 'image push' 
+                    
+                }
+            }
+            }    
   
      
    
