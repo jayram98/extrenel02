@@ -45,7 +45,8 @@ pipeline {
 			steps {
 				script{
                //docker.withRegistry('',registryCredential)
-					
+		withCredentials([string(credentialsId: 'dockerusername', variable: 'dockerusername')])
+					{
 	        //sh 'docker build -t  .
 		sh "docker login -u ${dockerusername}  -p ${dockerpassword} "       
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
@@ -64,7 +65,7 @@ pipeline {
                 }
 			}
 		}           
-            
+		}
         stage('push image') {
             steps{
                 script {
