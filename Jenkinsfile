@@ -45,7 +45,8 @@ pipeline {
 			steps {
 				script{
                //docker.withRegistry('',registryCredential)
-		withCredentials([string(credentialsId: 'dockerusername', variable: 'dockerusername')])
+		withCredentials([string(credentialsId: 'dockerusername', credentialsId: 'dockerpassword')])
+					
 					{
 	        //sh 'docker build -t  .
 		sh "docker login -u ${dockerusername}  -p ${dockerpassword} "       
