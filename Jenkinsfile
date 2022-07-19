@@ -44,7 +44,7 @@ pipeline {
 
 			steps {
 				script{
-               docker.withRegistry('',registryCredential){
+               //docker.withRegistry('',registryCredential){
 	        //sh 'docker build -t  .
 		sh "docker login -u ${dockerusername}  -p ${dockerpassword} "       
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
