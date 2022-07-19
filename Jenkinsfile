@@ -45,7 +45,7 @@ pipeline {
 			steps {
 				script{
                //docker.withRegistry('',registryCredential)
-					{
+					
 	        //sh 'docker build -t  .
 		sh "docker login -u ${dockerusername}  -p ${dockerpassword} "       
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
@@ -56,7 +56,7 @@ pipeline {
 	            //sh 'docker push external:${env.BUILD_ID}'
 	            
                     //dockerImage.push(jay899/'${env.BUILD_ID}')
-		    }
+		    
 		    //docker push ('${env.BUILD_ID}')}		
                     
                     //docker login --username='${dockerHubUser}' --password='${dockerHubPassword}'
