@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 echo 'Retrieve source from github' 
-                git branch: 'main',
+                git branch: 'test',
                     url: 'https://github.com/jayram98/extrenel02.git'
 
                 echo 'showing files from repo?' 
