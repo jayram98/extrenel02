@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        registryCredential = 'jay998'
+        //registryCredential = 'jay998'
         imageName = 'external'
         dockerImage = ''
         }
