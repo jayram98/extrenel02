@@ -4,7 +4,7 @@ pipeline {
         registryCredential = 'dockerhub_id'
         imageName = 'external'
         dockerImage = ''
-        userRemoteConfigs: [[url: 'https://github.com/jayram98/extrenel02.git'],[k8s-deployment.yaml:'k8s-deployment.yaml']]
+        userRemoteConfigs: [[url: 'https://github.com/jayram98/extrenel02.git']]
         
         }
     stages {
