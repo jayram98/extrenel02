@@ -45,11 +45,11 @@ pipeline {
 			steps {
 				script{
                //docker.withRegistry('',registryCredential)
-		withCredentials([string(credentialsId: 'dockerusername', credentialsId: 'dockerpassword')])
+		withCredentials([string(credentialsId: 'dockerpassword')])
 					
 					{
 	        //sh 'docker build -t  .
-		sh "docker login -u ${dockerusername}  -p ${dockerpassword} "       
+		sh "docker login -u jay899  -p ${dockerpassword} "       
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
 		sh "docker images"
 	        sh "docker login docker.io"
