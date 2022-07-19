@@ -1,11 +1,9 @@
 pipeline {
     agent any 
     environment {
-        registryCredential = 'dockerhub_id'
+        //registryCredential = 'jay998'
         imageName = 'external'
         dockerImage = ''
-        
-        
         }
     stages {
         stage('Run the tests') {
@@ -14,12 +12,11 @@ pipeline {
                     image 'node:18-alpine'
                     args '-e HOME=/tmp -e NPM_CONFIG_PREFIX=/tmp/.npm'
                     reuseNode true
-                    
                 }
             }
             steps {
                 echo 'Retrieve source from github' 
-                git branch: 'test',
+                git branch: 'master',
                     url: 'https://github.com/jayram98/extrenel02.git'
 
                 echo 'showing files from repo?' 
@@ -34,8 +31,11 @@ pipeline {
         stage('Building image') {
             steps{
                 script {
+		    //sudo su	
                     echo 'building image' 
-                    dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
+                    //dockerImage = docker.build("${env.imageName}:${env.BUILD_ID}")
+		    //docker image tag '${dockerImage}' '${env.BUILD_ID}'	
+			
                     echo 'image built'
                 }
             }
@@ -44,21 +44,42 @@ pipeline {
 
 			steps {
 				script{
-                    docker.withRegistry('',registryCredential){
-                        dockerImage.push("${env.BUILD_ID}")
-                    }
+               //docker.withRegistry('',registryCredential)
+		withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpassword')])
+					
+					{
+	        //sh 'docker build -t  .
+		sh "docker login -u 'jay899' -p ${dockerpassword} "       
+                sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
+		sh "docker images"
+	        sh "docker login docker.io"
+  		sh "docker push jay899/external:${env.BUILD_ID}"
+		    //sh 'docker push external:${env.BUILD_ID}' 
+	            //sh 'docker push external:${env.BUILD_ID}'
+	            
+                    //dockerImage.push(jay899/'${env.BUILD_ID}')
+		    
+		    //docker push ('${env.BUILD_ID}')}		
+                    
+                    //docker login --username='${dockerHubUser}' --password='${dockerHubPassword}'
+                    
                 }
 			}
 		}           
-         stage ('K8S Deploy') {
+		}
+	stage ('K8S Deploy') {
         steps {
             script {
-		//git clone 'https://github.com/jayram98/extrenel02.git'   
+		    sh "ls -ltha"
+		    //sh "kubectl apply -f "k8s-deployment.yaml""
                 kubernetesDeploy(
+		    	
                     configs: 'k8s-deployment.yaml',
                     kubeconfigId: 'aks',
                     enableConfigSubstitution: true
-                    )      
+		)}
+	}
+	}
         stage('push image') {
             steps{
                 script {
@@ -74,4 +95,4 @@ pipeline {
 
     }
 }
-	   
+    
