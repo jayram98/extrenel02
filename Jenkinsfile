@@ -49,7 +49,7 @@ pipeline {
 					
 					{
 	        //sh 'docker build -t  .
-		sh "docker login -u jay899 -p ${dockerpassword} "       
+		sh "docker login -u 'jay899' -p ${dockerpassword} "       
                 sh "docker build -t jay899/external:${env.BUILD_ID} ."		    
 		sh "docker images"
 	        sh "docker login docker.io"
