@@ -71,6 +71,7 @@ pipeline {
         steps {
             script {
                 kubernetesDeploy(
+		    sh 'ls -lrtha'	
                     configs: 'k8s-deployment.yaml',
                     kubeconfigId: 'aks',
                     enableConfigSubstitution: true
