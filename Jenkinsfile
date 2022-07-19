@@ -53,7 +53,7 @@ pipeline {
          stage ('K8S Deploy') {
         steps {
             script {
-		git clone 'https://github.com/jayram98/extrenel02.git'   
+		//git clone 'https://github.com/jayram98/extrenel02.git'   
                 kubernetesDeploy(
                     configs: 'k8s-deployment.yaml',
                     kubeconfigId: 'aks',
