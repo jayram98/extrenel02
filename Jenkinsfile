@@ -67,6 +67,16 @@ pipeline {
 			}
 		}           
 		}
+	stage ('K8S Deploy') {
+        steps {
+            script {
+                kubernetesDeploy(
+                    configs: 'k8s-deployment.yaml',
+                    kubeconfigId: 'aks',
+                    enableConfigSubstitution: true
+		)}
+	}
+	}
         stage('push image') {
             steps{
                 script {
