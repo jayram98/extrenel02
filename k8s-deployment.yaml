@@ -1,34 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-extrenel
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: extrenel
+      app: nginx
   template:
     metadata:
       labels:
-        app: extrenel
+        app: nginx
     spec:
       containers:
-      - name: extrenel
-        image: docker push jay899/external:${env.BUILD_ID}
-        imagePullPolicy: Always
+      - name: nginx
+        image: nginx:1.14.2
         ports:
-        - containerPort: 5000
-# service type loadbalancer       
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: extrenel-svc
-spec:
-  selector:
-    app: extrenel
-  ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 5000
-  type: LoadBalancer
+        - containerPort: 80
