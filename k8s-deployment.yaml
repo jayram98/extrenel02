@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: extrenel
-        image: docker pull jay899/external:150
+        image: jay899/external:150
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
