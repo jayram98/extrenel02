@@ -71,7 +71,7 @@ pipeline {
         steps {
             script {
 		    sh "ls -ltha"
-		    sh "kubectl apply -f "k8s-deployment.yaml""
+		    sh kubectl apply -f "k8s-deployment.yaml"
                 kubernetesDeploy(
 		    	
                     //configs: 'k8s-deployment.yaml',
