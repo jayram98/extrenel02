@@ -74,7 +74,7 @@ pipeline {
 		    //sh kubectl apply -f "k8s-deployment.yaml"
                 kubernetesDeploy(
 		    	
-                    configs: 'k8s-deployment.yaml,external-load-balancer.yaml',
+                    configs: 'k8s-deployment.yaml,external-load-balancer.yaml,external-deployment.yaml',
                     kubeconfigId: 'aks',
                     enableConfigSubstitution: true
 		)}
