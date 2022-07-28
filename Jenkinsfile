@@ -28,6 +28,7 @@ pipeline {
                 echo 'Testing completed'
             }
         }
+        stage('sonarqube') {
 	          steps{
                       script{
                       withSonarQubeEnv('sonarserver') { 
@@ -41,7 +42,8 @@ pipeline {
                     }
 		                  sh "mvn clean install"
                   }
-                }      
+                }  
+        }    
 	    
 	    
         stage('Building image') {
